@@ -12,4 +12,7 @@ darkToggle.textContent = "🌓";
 darkToggle.id = "dark-toggle";
 document.body.appendChild(darkToggle);
 
+const commonCurrencies = ["USD","EUR","GBP","KES","JPY","CAD"];
+let rates = {};
+
 
