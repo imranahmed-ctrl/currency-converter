@@ -88,4 +88,10 @@ fetch("https://open.er-api.com/v6/latest/USD")
   }
   });
 
-  
+ swapBtn.addEventListener("click", () => {
+    const temp = fromCurrency.value;
+    fromCurrency.value = toCurrency.value;
+    toCurrency.value = temp;
+ });
+ 
+ 
