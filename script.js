@@ -38,3 +38,21 @@ fetch("https://open.er-api.com/v6/latest/USD")
   
   fromCurrency.value = "USD";
   toCurrency.value = "KES";
+
+   commonCurrencies.forEach(code => {
+      const btn = document.createElement("button");
+      btn.textContent = code;
+      btn.type = "button";
+      btn.addEventListener("click", () => {
+        fromCurrency.value = "USD";
+        toCurrency.value = code;
+        form.dispatchEvent(new Event("submit"));
+      });
+      quickContainer.appendChild(btn);
+    });
+  })
+  .catch(err => {
+    console.error("❌ API Error:", err);
+    resultDiv.textContent = "⚠️ Failed to load currency data.";
+  });
+
