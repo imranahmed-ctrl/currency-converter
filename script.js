@@ -15,4 +15,16 @@ document.body.appendChild(darkToggle);
 const commonCurrencies = ["USD","EUR","GBP","KES","JPY","CAD"];
 let rates = {};
 
+fetch("https://open.er-api.com/v6/latest/USD")
+  .then(res => res.json())
+  .then(data => {
+    console.log("✅ API Data:", data);
 
+    if (!data || !data.rates) {
+      throw new Error("Invalid API structure");
+    }
+
+    rates = data.rates;
+    const currencyCodes = Object.keys(rates);
+
+    
