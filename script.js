@@ -27,4 +27,14 @@ fetch("https://open.er-api.com/v6/latest/USD")
     rates = data.rates;
     const currencyCodes = Object.keys(rates);
 
-    
+  currencyCodes.map( code => {
+    const option1 = document.createElement("option");
+    const option2 = document.createElement("option");
+    option1.value = option2.value = code;
+    option1.textContent = option2.textContent = code;
+    fromCurrency.appendChild(option1);
+    toCurrency.appendChild(option2);
+  });
+  
+  fromCurrency.value = "USD";
+  toCurrency.value = "KES";
