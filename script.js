@@ -82,4 +82,10 @@ fetch("https://open.er-api.com/v6/latest/USD")
     recentList.removeChild(recentList.lastChild);
   }
 
+  const common = commonCurrencies.find(curr => curr === to);
+  if(common) {
+    console.log(`Converted to a common currency: ${common}`);
+  }
+  });
+
   
