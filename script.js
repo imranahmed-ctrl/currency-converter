@@ -74,3 +74,12 @@ fetch("https://open.er-api.com/v6/latest/USD")
   const resultText = `${amount} ${from} = ${converted.toFixed(2)} ${to}`;
   resultDiv.textContent = resultText;
   console.log(resultText);
+
+  const li = document.createElement("li");
+  li.textContent = resultText;
+  recentList.prepend(li);
+  if(recentList.children.length>5){
+    recentList.removeChild(recentList.lastChild);
+  }
+
+  
