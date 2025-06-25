@@ -56,3 +56,21 @@ fetch("https://open.er-api.com/v6/latest/USD")
     resultDiv.textContent = "⚠️ Failed to load currency data.";
   });
 
+  form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const amount = parseFloat(amountInput.value);
+  const from = fromCurrency.value;
+  const to = toCurrency.value;
+
+  if (!amount || from === to || !rates[from] || !rates[to]) {
+    resultDiv.textContent = "Invalid amount or currency selection.";
+    return;
+  }
+
+  const usdBase = amount / rates[from]; 
+  const converted = usdBase * rates[to]; 
+
+  const resultText = `${amount} ${from} = ${converted.toFixed(2)} ${to}`;
+  resultDiv.textContent = resultText;
+  console.log(resultText);
