@@ -1,4 +1,4 @@
-const form = document.getElementById("convertet-form");
+const form = document.getElementById("converter-form");
 const amountInput = document.getElementById("amount");
 const fromCurrency = document.getElementById("from-currency");
 const toCurrency = document.getElementById("to-currency");
@@ -92,6 +92,10 @@ fetch("https://open.er-api.com/v6/latest/USD")
     const temp = fromCurrency.value;
     fromCurrency.value = toCurrency.value;
     toCurrency.value = temp;
+ });
+
+ darkToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
  });
  
  
