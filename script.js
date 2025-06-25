@@ -7,4 +7,9 @@ const recentList = document.getElementById("recent-list");
 const quickContainer = document.getElementById("quick-currencies");
 const swapBtn = document.getElementById("swap-btn");
 
+const darkToggle = document.createElement("button");
+darkToggle.textContent = "🌓";
+darkToggle.id = "dark-toggle";
+document.body.appendChild(darkToggle);
+
 
