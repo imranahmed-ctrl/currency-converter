@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currency Converter</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Currency Converter</title>
+  <div class="logo-title">
+  <span class="logo">💱</span>
+  <h1>Currency Converter</h1>
+</div>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-   <div class="container">
     <header>Currency Converter</header>
+  <div class="container">
 
     <main>
-        <div class="converter-box">
-            <h1>Convert Currencies</h1>
-            <form id="converter-form">
-                <div class="form-group">
-                    <label for="amount">Amount:</label>
-                    <input type="number" id="amount" placeholder="Enter Amount" required/>
-                </div>
+      <section class="converter">
+        <form id="converter-form">
+          <input type="number" id="amount" placeholder="Enter amount" required />
 
-                <div class="form-group">
-                    <label for="from-currency">From:</label>
-                    <select id="from-currency" required></select>
-                </div>
+          <div class="currency-select">
+            <select id="from-currency" required>
+              <option value="">From</option>
+            </select>
 
-                <div class="form-group">
-                    <label for="to-currency">To:</label>
-                    <select id="to-currency" required></select>
-                </div>
+            <button type="button" id="swap-btn">⇄</button>
 
-                <button type="submit">Convert</button>
-            </form>
+            <select id="to-currency" required>
+              <option value="">To</option>
+            </select>
+          </div>
 
-            <div id="result" class="result-area"></div>
-        </div>
+          <button type="submit">Convert</button>
+        </form>
+
+        <div id="result"></div>
+
+        <section class="common-currencies">
+          <h3>Commonly Exchanged</h3>
+          <div id="quick-currencies">
+            <!-- Buttons will be injected here -->
+          </div>
+        </section>
+
+        <section class="recent-conversions">
+          <h3>Recent Conversions</h3>
+          <ul id="recent-list"></ul>
+        </section>
+      </section>
     </main>
-   </div> 
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
