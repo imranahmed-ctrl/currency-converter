@@ -1,7 +1,7 @@
 # Currency-Converter
 This a single page application(SPA) which is a responsive web application built with **HTML**, **CSS** and**JavaScript**.It uses real time exchange rates which are fetched from ["https://open.er-api.com/v6/latest/USD"].It includes extra features like dark mode, common currency shortcuts and recent conversions history.
 
-# Features included
+## Features included
 
 1.Real time exchange rates through ["https://open.er-api.com/v6/latest/USD"].
 2.Convert any amount between any two currencies.
@@ -11,7 +11,7 @@ This a single page application(SPA) which is a responsive web application built 
 6.smooth dark toogle button
 
 
-# Technologies used 
+## Technologies used 
 **HTML**
 **CSS**
 **JavaScript**
