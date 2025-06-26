@@ -32,7 +32,7 @@ main{
 }
 
 .converter{
-    background: white;
+    background: lightgray;
     padding: 30px;
     border-radius: 12px;
     width: 75vw;
