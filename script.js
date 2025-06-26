@@ -1,7 +1,7 @@
 const form = document.getElementById("converter-form");
 const amountInput = document.getElementById("amount");
-const fromCurrency = document.getElementById("from-currency");
-const toCurrency = document.getElementById("to-currency");
+const sourceCurrency = document.getElementById("source-currency");
+const targetCurrency = document.getElementById("target-currency");
 const resultDiv = document.getElementById("result");
 const recentList = document.getElementById("recent-list");
 const quickContainer = document.getElementById("quick-currencies");
@@ -32,20 +32,20 @@ fetch("https://open.er-api.com/v6/latest/USD")
     const option2 = document.createElement("option");
     option1.value = option2.value = code;
     option1.textContent = option2.textContent = code;
-    fromCurrency.appendChild(option1);
-    toCurrency.appendChild(option2);
+    sourceCurrency.appendChild(option1);
+    targetCurrency.appendChild(option2);
   });
   
-  fromCurrency.value = "USD";
-  toCurrency.value = "KES";
+  sourceCurrency.value = "USD";
+  targetCurrency.value = "KES";
 
    commonCurrencies.forEach(code => {
       const btn = document.createElement("button");
       btn.textContent = code;
       btn.type = "button";
       btn.addEventListener("click", () => {
-        fromCurrency.value = "USD";
-        toCurrency.value = code;
+        sourceCurrency.value = "USD";
+        targetCurrency.value = code;
         form.dispatchEvent(new Event("submit"));
       });
       quickContainer.appendChild(btn);
@@ -60,18 +60,18 @@ fetch("https://open.er-api.com/v6/latest/USD")
   event.preventDefault();
 
   const amount = parseFloat(amountInput.value);
-  const from = fromCurrency.value;
-  const to = toCurrency.value;
+  const source = sourceCurrency.value;
+  const target = targetCurrency.value;
 
-  if (!amount || from === to || !exchangeRates[from] || !exchangeRates[to]) {
+  if (!amount || source === target || !exchangeRates[source] || !exchangeRates[target]) {
     resultDiv.textContent = "Invalid amount or currency.";
     return;
   }
 
-  const usdBase = amount / exchangeRates[from]; 
-  const converted = usdBase * exchangeRates[to]; 
+  const usdBase = amount / exchangeRates[source]; 
+  const converted = usdBase * exchangeRates[target]; 
 
-  const resultText = `${amount} ${from} = ${converted.toFixed(2)} ${to}`;
+  const resultText = `${amount} ${source} = ${converted.toFixed(2)} ${target}`;
   resultDiv.textContent = resultText;
   console.log(resultText);
 
@@ -82,16 +82,16 @@ fetch("https://open.er-api.com/v6/latest/USD")
     recentList.removeChild(recentList.lastChild);
   }
 
-  const common = commonCurrencies.find(curr => curr === to);
+  const common = commonCurrencies.find(curr => curr === target);
   if(common) {
     console.log(`Converted to a common currency: ${common}`);
   }
   });
 
  swapBtn.addEventListener("click", () => {
-    const temp = fromCurrency.value;
-    fromCurrency.value = toCurrency.value;
-    toCurrency.value = temp;
+    const temp = sourceCurrency.value;
+    sourceCurrency.value = targetCurrency.value;
+    targetCurrency.value = temp;
  });
 
  darkToggle.addEventListener("click", () => {
