@@ -1,3 +1,4 @@
+//get DOM elments
 const form = document.getElementById("converter-form");
 const amountInput = document.getElementById("amount");
 const sourceCurrency = document.getElementById("source-currency");
@@ -7,14 +8,17 @@ const recentList = document.getElementById("recent-list");
 const quickContainer = document.getElementById("quick-currencies");
 const swapBtn = document.getElementById("swap-btn");
 
+//create dark mode toggle button
 const darkToggle = document.createElement("button");
 darkToggle.textContent = "🌓";
 darkToggle.id = "dark-toggle";
 document.body.appendChild(darkToggle);
 
+//add common currencies
 const commonCurrencies = ["USD","EUR","GBP","KES","JPY","CAD"];
 let exchangeRates = {};
 
+//fetch curency exchange rates from an external API
 fetch("https://open.er-api.com/v6/latest/USD")
   .then(response => response.json())
   .then(data => {
@@ -27,6 +31,7 @@ fetch("https://open.er-api.com/v6/latest/USD")
     exchangeRates = data.rates;
     const allCurrencies = Object.keys(exchangeRates);
 
+    //populate with available currency codes
   allCurrencies.forEach( code => {
     const option1 = document.createElement("option");
     const option2 = document.createElement("option");
@@ -36,9 +41,11 @@ fetch("https://open.er-api.com/v6/latest/USD")
     targetCurrency.appendChild(option2);
   });
   
+  //set the default selection
   sourceCurrency.value = "USD";
   targetCurrency.value = "KES";
 
+  //create buttons for exchange commonly exchanged currencies
    commonCurrencies.forEach(code => {
       const btn = document.createElement("button");
       btn.textContent = code;
@@ -56,6 +63,7 @@ fetch("https://open.er-api.com/v6/latest/USD")
     resultDiv.textContent = "Failed to load currency data.";
   });
 
+  //handle form submission
   form.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -63,18 +71,22 @@ fetch("https://open.er-api.com/v6/latest/USD")
   const source = sourceCurrency.value;
   const target = targetCurrency.value;
 
+
   if (!amount || source === target || !exchangeRates[source] || !exchangeRates[target]) {
     resultDiv.textContent = "Invalid amount or currency.";
     return;
   }
 
+  //make USD as the base currency
   const usdBase = amount / exchangeRates[source]; 
   const converted = usdBase * exchangeRates[target]; 
 
+  //show result on both the web page and the console
   const resultText = `${amount} ${source} = ${converted.toFixed(2)} ${target}`;
   resultDiv.textContent = resultText;
   console.log(resultText);
 
+  //add recent converted currencies
   const li = document.createElement("li");
   li.textContent = resultText;
   recentList.prepend(li);
@@ -88,12 +100,14 @@ fetch("https://open.er-api.com/v6/latest/USD")
   }
   });
 
+  //swap currencies
  swapBtn.addEventListener("click", () => {
     const temp = sourceCurrency.value;
     sourceCurrency.value = targetCurrency.value;
     targetCurrency.value = temp;
  });
 
+ //toggle dark mode
  darkToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
  });
