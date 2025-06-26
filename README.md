@@ -3,19 +3,20 @@ This a single page application(SPA) which is a responsive web application built 
 
 ## Features included
 
-1.Real time exchange rates through ["https://open.er-api.com/v6/latest/USD"].
-2.Convert any amount between any two currencies.
-3.Swap button to flip source and target currencies.
-4.Commonly converted currencies shortcuts.
-5.Recent conversion history(shows last 10)
-6.smooth dark toogle button
+1.Real time exchange rates through ["https://open.er-api.com/v6/latest/USD"].<br>
+2.Convert any amount between any two currencies.<br>
+3.Swap button to flip source and target currencies.<br>
+4.Commonly converted currencies shortcuts.<br>
+5.Recent conversion history(shows last 10)<br>
+6.smooth dark toogle button.<br>
 
 
 ## Technologies used 
-**HTML**
-**CSS**
-**JavaScript**
-**External API**
+
+**HTML**<br>
+**CSS**<br>
+**JavaScript**<br>
+**External API**<br>
 
 # Author
 Imran Ahmed
